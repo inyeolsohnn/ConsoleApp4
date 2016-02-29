@@ -1,0 +1,44 @@
+﻿  Actor.cpp
+Actor.cpp(68): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+  CharacterActionState.cpp
+  CharacterActionStateActing.cpp
+CharacterActionStateActing.cpp(11): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+CharacterActionStateActing.cpp(32): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+  CharacterActionStateIdle.cpp
+  CharacterMovingState.cpp
+  CharacterState.cpp
+  CharacterStateRecovery.cpp
+  ConsoleApplication4.cpp
+ConsoleApplication4.cpp(38): warning C4244: 'initializing': conversion from 'sf::Int32' to 'float', possible loss of data
+ConsoleApplication4.cpp(67): warning C4244: '=': conversion from 'sf::Int32' to 'float', possible loss of data
+ConsoleApplication4.cpp(39): warning C4101: 'loops': unreferenced local variable
+  Game.cpp
+Game.cpp(53): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+Game.cpp(54): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+Game.cpp(62): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+Game.cpp(63): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  GameState.cpp
+  GatlingGun.cpp
+GatlingGun.cpp(23): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+GatlingGun.cpp(25): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+GatlingGun.cpp(26): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+GatlingGun.cpp(27): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+GatlingGun.cpp(28): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+  Projectile.cpp
+Projectile.cpp(8): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+Projectile.cpp(27): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+Projectile.cpp(28): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+  StartGameState.cpp
+StartGameState.cpp(162): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+StartGameState.cpp(163): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  Status.cpp
+Status.cpp(8): warning C4244: 'argument': conversion from 'float' to 'sf::Int32', possible loss of data
+  WorldMapGameState.cpp
+WorldMapGameState.cpp(49): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+WorldMapGameState.cpp(50): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  Generating code
+  9 of 2139 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    2 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ConsoleApplication4.vcxproj -> D:\users\pc\documents\visual studio 2015\Projects\ConsoleApplication4\Release\ConsoleApplication4.exe
