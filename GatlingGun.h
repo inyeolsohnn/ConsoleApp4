@@ -11,6 +11,7 @@ public:
 	bool checkCondition(Actor* actor);
 private:
 	sf::Time rate;
+	Moo::Vector3D direction;
 	int firedCount=0;
 	void fire();
 };

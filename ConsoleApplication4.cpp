@@ -21,6 +21,7 @@
 
 int main()
 {
+	
 	Moo::Vector3D min1(1.f, 1.f, 1.f);
 	Moo::Vector3D max1(3.f, 3.f, 3.f);
 	Moo::BoundingBox box1(min1, max1);
@@ -51,7 +52,7 @@ int main()
 	while (game.window.isOpen()) {
 
 
-		while (systemClock.getElapsedTime().asMilliseconds() >= next_game_tick) {
+		if (systemClock.getElapsedTime().asMilliseconds() >= next_game_tick) {
 
 			float dt = systemClock.getElapsedTime().asMilliseconds() - lastUpdated;
 

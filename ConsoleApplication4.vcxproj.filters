@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Moo::Header">
+      <UniqueIdentifier>{97a53163-2816-4ce7-ac76-b211265a1f67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Moo::Source">
+      <UniqueIdentifier>{28624bac-33c7-4fea-a3c8-d05551a9cfa6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -96,15 +102,6 @@
     <ClInclude Include="Collidable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BoundingBox.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BoundingSphere.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Octree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -113,6 +110,24 @@
     </ClInclude>
     <ClInclude Include="CollisionResolver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3D.h">
+      <Filter>Moo::Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingBox.h">
+      <Filter>Moo::Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BoundingSphere.h">
+      <Filter>Moo::Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Moo::Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector4D.h">
+      <Filter>Moo::Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Moo::Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -191,15 +206,6 @@
     <ClCompile Include="Collidable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BoundingBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BoundingSphere.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Octree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -208,6 +214,24 @@
     </ClCompile>
     <ClCompile Include="CollisionResolver.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3D.cpp">
+      <Filter>Moo::Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingBox.cpp">
+      <Filter>Moo::Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingSphere.cpp">
+      <Filter>Moo::Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Moo::Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector4D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Moo::Source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,5 +10,6 @@ public:
 	virtual ~Physical();
 	virtual void update(float dt) = 0;
 	virtual void draw(sf::RenderWindow& window, float dt) = 0;
+	virtual void drawShadow(sf::RenderWindow& window, float dt) = 0;;
 };
 

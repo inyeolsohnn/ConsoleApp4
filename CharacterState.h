@@ -5,6 +5,7 @@ class CharacterState
 public:
 	CharacterState(Actor* actor);
 	virtual ~CharacterState();
+
 	enum CharacterStateType {Action, Move};
 	CharacterStateType charStateType;
 	Actor* actor;

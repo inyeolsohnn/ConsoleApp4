@@ -17,9 +17,13 @@ public:
 	bool started = false;
 	bool ended = false;
 
+	bool actorCtrl;
+	bool actorRotatable;
+	bool actorMovable;
 	//method declaration
 	Active();
 	Active(std::vector<Status> statusInflicts, float duration, float cooldown, Actor* actor);
+	Active(Active && src);
 	virtual ~Active();
 	
 	virtual void handleInput(sf::Event event)=0;

@@ -12,26 +12,30 @@ StartGameState::StartGameState(Game* game)
 	pos *= 0.5f;
 	this->view.setCenter(pos);
 	//this->actor =new Actor(100, 100, 0, &*this);
-	Moo::Vector3D min1(30, 280, 0);
-	Moo::Vector3D max1(70, 320, 0);
+	Moo::Vector3D min1(40, 295, 0);
+	Moo::Vector3D max1(60, 305, 80);
 	Moo::BoundingBox box1(min1, max1);
 
-	Moo::Vector3D min2(130, 280, 0);
-	Moo::Vector3D max2(170, 320, 0);
+	Moo::Vector3D min2(140, 295, 0);
+	Moo::Vector3D max2(180, 345, 80);
 	Moo::BoundingBox box2(min2, max2);
-	std::shared_ptr<Actor> a1 = std::make_shared<Actor>(100, 100, 0, &*this, box1);
+	std::shared_ptr<Actor> a1 = std::make_shared<Actor>(20, 10, 80, &*this, box1);  //id0
 
-	std::shared_ptr<Actor> a2 = std::make_shared<Actor>(100, 100, 0, &*this, box2);
+	std::shared_ptr<Actor> a2 = std::make_shared<Actor>(40, 50, 80, &*this, box2); //id1
+	
+	
+
+	//this->controllables.push_back(a3);
 	this->controllables.push_back(a1);
 	this->controllables.push_back(a2);
-
-
-	this->min = Moo::Vector3D();
+	this->min = Moo::Vector3D(); 
 	this->max = Moo::Vector3D(2000.f, 2000.f, 2000.f);
 	this->mainBox = Moo::BoundingBox(min, max);
 	this->octree = Octree(0, mainBox, nullptr, &(this->cr));
-	std::cout << sizeof(octree.childNode)/sizeof(octree.childNode[0]) << std::endl;
-	a2->removeStates();
+	a2->moving_right = false;
+	a2->controllable = false;
+	a2->shape.setFillColor(sf::Color::Red);
+	
 }
 
 StartGameState::~StartGameState()
@@ -43,6 +47,7 @@ StartGameState::~StartGameState()
 
 void StartGameState::draw(const float dt)
 {
+	std::vector<std::shared_ptr<Collidable>> renderVector;
 	this->game->window.setView(this->view);
 	this->game->window.clear(sf::Color::Black);
 	this->game->window.draw(this->game->background);
@@ -51,38 +56,36 @@ void StartGameState::draw(const float dt)
 	auto controllableIt = this->controllables.begin();
 	auto physicalIt = this->physicals.begin();
 	for (; controllableIt != this->controllables.end(); controllableIt++) {
-		(*controllableIt)->draw(this->game->window,dt);
+	//	(*controllableIt)->draw(this->game->window,dt);
+		renderVector.push_back(*controllableIt);
 	}
 	for (; physicalIt != this->physicals.end(); physicalIt++) {
-		(*physicalIt)->draw(this->game->window, dt);
+	//	(*physicalIt)->draw(this->game->window, dt);
+		renderVector.push_back(*physicalIt);
+	}
+
+	std::sort(renderVector.begin(), renderVector.end(), [](const std::shared_ptr<Collidable>& a, const std::shared_ptr<Collidable>& b)->bool {
+		return a->bound.cent.y < b->bound.cent.y;
+	});
+	for (auto rendIt = renderVector.begin(); rendIt != renderVector.end(); rendIt++) {
+		(*rendIt)->drawShadow(this->game->window, dt);
+	}
+	for (auto rendIt = renderVector.begin(); rendIt != renderVector.end(); rendIt++) {
+		(*rendIt)->draw(this->game->window, dt);
 	}
 	return;
 }
 
 void StartGameState::update(const float dt)
 {
-	
-	octree.clear();
-	
+
 	auto controllableIt = this->controllables.begin();
 	auto physicalIt = this->physicals.begin();
-
 	
-	while (physicalIt != physicals.end()) {
-		octree.insert(std::static_pointer_cast<Collidable>(*physicalIt));
-		physicalIt++;
-	}
-	while (controllableIt != controllables.end()) {
-		octree.insert(std::static_pointer_cast<Collidable>(*controllableIt));
-		controllableIt++;
-	}
-
-	octree.checkCollision();
 	//end collision test and resolution
 	//Updating game
 	
-	physicalIt = physicals.begin();
-	controllableIt = controllables.begin();
+
 	
 	while (controllableIt != this->controllables.end()) {
 		if ((*controllableIt)->expired) {
@@ -137,7 +140,21 @@ void StartGameState::update(const float dt)
 	 //end game update
 
 	
+	octree.clear();
+	physicalIt = physicals.begin();
+	controllableIt = controllables.begin();
 
+
+	while (physicalIt != physicals.end()) {
+		octree.insert(std::static_pointer_cast<Collidable>(*physicalIt));
+		physicalIt++;
+	}
+	while (controllableIt != controllables.end()) {
+		octree.insert(std::static_pointer_cast<Collidable>(*controllableIt));
+		controllableIt++;
+	}
+
+	octree.checkCollision();
 
 	//clearing caches//
 	physicalSpawnCache.clear();

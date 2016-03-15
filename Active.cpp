@@ -12,7 +12,9 @@ Active::Active(std::vector<Status> inflictingStatusVec, float duration, float co
 	this->elapsed = sf::milliseconds(0.f);
 }
 
+Active::Active(Active&& src) {
 
+}
 Active::~Active()
 {
 	std::cout << "Active base destructor" << std::endl;

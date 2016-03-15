@@ -24,5 +24,9 @@ public:
 	virtual void update(float dt);
 	virtual void draw(sf::RenderWindow& window, float dt);
 	virtual void collide(Collidable* collidee);
+	virtual void drawShadow(sf::RenderWindow & window, float dt)
+	{
+		
+	}
 };
 

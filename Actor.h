@@ -14,44 +14,51 @@ class CharacterMovingState;
 
 class Actor :  public Controllable
 {
-	
 public:
-	Actor();
-	Actor(const unsigned int width, const unsigned int height, const unsigned int level, StartGameState* sgs, Moo::BoundingBox box);
-	virtual ~Actor();
-	int health;
+	enum SpawnType { DESPAWN, SPAWN };
+	static int actorCounter;
 
-	enum SpawnType{DESPAWN, SPAWN};
-	float gravity;	
+public:
+	StartGameState* gameState;	
+	float gravity;
+	int health;
 	std::unique_ptr<CharacterActionState> actionState_;
 	std::unique_ptr<CharacterMovingState> moveState_;
 	std::map<std::string, std::shared_ptr<Active>> skillMap;
 	std::map<sf::Keyboard::Key, std::string> mapping;
 	std::map<std::string, Status> statusMap;
+	Moo::Vector3D facing;
 	bool moving_down = false;
 	bool moving_right = false;
 	bool moving_up = false;
 	bool moving_left = false;
 	bool jumping = false;
+	float ms = 1.f;
 	float controllable = 1.0f;
 	sf::Sprite sprite;
 	AnimationManager animMgr;
-	sf::CircleShape shape;
+	sf::RectangleShape shape;
+	sf::CircleShape shadow;
 	int width, height, level;
-	void collide(Collidable* collidee);
-	
-
 	float dz;
 	
-	
+	int actorId;
+public:
+	Actor(Actor && src);
+	Actor();
+	Actor(const unsigned int width, const unsigned int height, const unsigned int level, StartGameState* sgs, Moo::BoundingBox box);
+	Actor(const Actor& src);
+	virtual ~Actor();
+	void collide(Collidable* collidee);	
 	virtual void getDamaged(int x);
 	virtual void draw(sf::RenderWindow& window, float dt);
 	virtual void update(float dt);
 	virtual void handleInput(sf::Event event);
 	virtual void flagForSpawn(std::shared_ptr<Controllable> controlPtr, SpawnType spawnType);
 	virtual void flagForSpawn(std::shared_ptr<Physical> physicalPtr, SpawnType spawnType);
+	virtual void drawShadow(sf::RenderWindow& window, float dt);
 	void removeStates();
-	StartGameState* gameState; //the game actor belongs to
+	//the game actor belongs to
 private:
 	static void initializeSkillMap(std::string actorName, std::map<std::string, std::shared_ptr<Active>> & skillMap, Actor* actor);
 	void initializeMapping();

@@ -7,7 +7,8 @@
 CharacterActionStateIdle::CharacterActionStateIdle(Actor* actor) : CharacterActionState(actor)
 {
 	this->actionState = CharacterActionState::ActionState::ACTING;
-	this->movable = true;
+	
+	
 }
 
 

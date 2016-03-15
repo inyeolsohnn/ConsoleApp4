@@ -58,7 +58,12 @@ namespace Moo {
 			this->cent.y = (max.y + min.y) / 2;
 			this->cent.z = (max.z + min.z) / 2;
 		}
-		
+		void translate(const Vector3D& vec) {
+			min+= vec;
+			max += vec;
+			setCenter();
+
+		}
 
 		ContainmentType contains(BoundingBox bBox);
 		ContainmentType contains(BoundingSphere bSphere);

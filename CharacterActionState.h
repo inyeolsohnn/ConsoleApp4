@@ -9,7 +9,7 @@ public:
 	CharacterActionState(Actor* actor);
 	virtual ~CharacterActionState();
 	enum ActionState { IDLE, ACTING };
-	bool movable;
+	
 	ActionState actionState;
 
 	virtual void update(float dt) ;

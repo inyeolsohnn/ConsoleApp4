@@ -22,8 +22,6 @@ public:
 	CollisionResolver cr;
 	std::vector<std::shared_ptr<Physical>> physicals;
 	std::vector<std::shared_ptr<Controllable>> controllables;
-
-
 	std::vector<std::shared_ptr<Physical>> physicalSpawnCache;
 	std::vector<std::shared_ptr<Controllable>> controlSpawnCache;
 	std::vector<std::shared_ptr<Physical>> physicalDespawnCache;

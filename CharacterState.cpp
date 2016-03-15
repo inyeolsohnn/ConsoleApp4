@@ -11,3 +11,4 @@ CharacterState::CharacterState(Actor* actor)
 CharacterState::~CharacterState()
 {
 }
+
